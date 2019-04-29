@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 newPos;
     private int moveDirection;
-    private float moveSpeed = 10.0f;
+    [SerializeField] float moveSpeed = 10.0f;
     private float InitialYPos;
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
             newPos = new Vector2(rb.position.x + (moveDirection * moveSpeed * Time.deltaTime), InitialYPos);
         }
 
-        rb.MovePosition(newPos);
+        rb.transform.position = Vector3.Lerp(rb.transform.position, newPos, 1f);
     }
 
     void GetMoveDirection()
