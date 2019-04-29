@@ -6,7 +6,9 @@ public class ObstacleSpawnerScript : MonoBehaviour
 {
     private Vector2 spawnLocation;
     [SerializeField] GameObject[] Obstacles;
-
+    [SerializeField] GameObject[] CarSpawnPositions;
+    [SerializeField] GameObject[] CopCarSpawnPositions;
+    
     [SerializeField] float minSpawnX;
     [SerializeField] float maxSpawnX;
     [SerializeField] float SpawnInterval;
@@ -14,7 +16,6 @@ public class ObstacleSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnLocation = this.gameObject.transform.position;
         InvokeRepeating("SpawnObstacle", 0.2f, SpawnInterval);
     }
 
@@ -28,9 +29,16 @@ public class ObstacleSpawnerScript : MonoBehaviour
     {
         if(Obstacles.Length > 0)
         {
-            spawnLocation.x = Random.Range(minSpawnX, maxSpawnX);
-
             GameObject a = Instantiate(Obstacles[Random.Range(0, Obstacles.Length)]);
+
+            if(a.CompareTag("Car"))
+            {
+                spawnLocation = CarSpawnPositions[Random.Range(0, CarSpawnPositions.Length)].transform.position;
+            }
+            else if(a.CompareTag("CopCar"))
+            {
+                spawnLocation = CopCarSpawnPositions[Random.Range(0, CopCarSpawnPositions.Length)].transform.position;
+            }
 
             a.transform.position = spawnLocation;
         }       
