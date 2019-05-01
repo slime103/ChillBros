@@ -29,7 +29,16 @@ public class ObstacleSpawnerScript : MonoBehaviour
     {
         if(Obstacles.Length > 0)
         {
-            GameObject a = Instantiate(Obstacles[Random.Range(0, Obstacles.Length)]);
+            GameObject a = null;
+
+            if (Random.Range(0.0f, 10.0f) > 3.0f)
+            {
+                a = Instantiate(Obstacles[0]);
+            }
+            else
+            {
+                a = Instantiate(Obstacles[1]);
+            }
 
             if(a.CompareTag("Car"))
             {
