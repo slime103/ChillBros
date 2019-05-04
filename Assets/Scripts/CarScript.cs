@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class CarScript : ObstacleScript
 {
+    SpriteRenderer sr;
+
+    [SerializeField] Sprite[] CarSprites;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        sr = GetComponent<SpriteRenderer>();
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // End game, player caught
-
-        }
+        sr.sprite = CarSprites[Random.Range(0, CarSprites.Length)];
     }
 }

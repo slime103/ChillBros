@@ -14,15 +14,22 @@ public class ObstacleScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if(rb == null)
+        if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
         }
 
         Vector2 newPos = rb.position + Vector2.down * moveSpeed * Time.deltaTime;
         rb.MovePosition(newPos);
+    }
+
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Dummy"))
+        {
+            collision.gameObject.GetComponent<RagdollScript>().TakeDamage(DamageToPlayer);
+        }
     }
 }

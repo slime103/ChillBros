@@ -10,12 +10,28 @@ public class RagdollScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        Physics2D.IgnoreLayerCollision(1, 2, true);
         Health = MaxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if((Health - damage) > 0.0f)
+        {
+            Health -= damage;
+        }
+        else
+        {
+            Health = 0.0f;
+            //End game
+        }
         
     }
 }

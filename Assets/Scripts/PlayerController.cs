@@ -20,8 +20,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetMoveDirection();
+        GetMoveDirection();       
+    }
 
+    void FixedUpdate()
+    {
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
             //Move player position respectively when left or right input is true

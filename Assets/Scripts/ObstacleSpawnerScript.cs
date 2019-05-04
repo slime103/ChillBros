@@ -33,6 +33,7 @@ public class ObstacleSpawnerScript : MonoBehaviour
 
             if (Random.Range(0.0f, 10.0f) > 3.0f)
             {
+                // Spawn normal cars at an increased rate
                 a = Instantiate(Obstacles[0]);
             }
             else
