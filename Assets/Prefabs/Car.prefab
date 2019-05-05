@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58577b6b85f7cc409d6ff644e7f290c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 18
+  moveSpeed: 10
   DamageToPlayer: 5
   CarSprites:
   - {fileID: 21300000, guid: c5d40dff3b5bc38409ee68e5da99ff82, type: 3}

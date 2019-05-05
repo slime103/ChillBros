@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CopCar
   - Car
+  - Ragdoll
   layers:
   - Default
   - TransparentFX

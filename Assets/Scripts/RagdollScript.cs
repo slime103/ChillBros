@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class RagdollScript : MonoBehaviour
 {
-    [SerializeField] float MaxHealth;
+    [SerializeField] float MaxHealth = 100.0f;
     [HideInInspector] public float Health = 100.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        Physics2D.IgnoreLayerCollision(1, 2, true);
         Health = MaxHealth;
     }
 
@@ -32,6 +30,7 @@ public class RagdollScript : MonoBehaviour
             Health = 0.0f;
             //End game
         }
-        
+
+        Debug.Log(Health);
     }
 }

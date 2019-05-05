@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Rigidbody2D rb = null;
     [SerializeField] float moveSpeed = 10.0f;
     [SerializeField] float DamageToPlayer = 5.0f;
 
@@ -27,7 +27,7 @@ public class ObstacleScript : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Dummy"))
+        if(collision.gameObject.CompareTag("Ragdoll"))
         {
             collision.gameObject.GetComponent<RagdollScript>().TakeDamage(DamageToPlayer);
         }
