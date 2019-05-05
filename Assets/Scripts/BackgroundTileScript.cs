@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class BackgroundTileScript : MonoBehaviour
 {
+    SpriteRenderer sr;
 
+    [SerializeField] Sprite[] Backgrounds;
     [SerializeField] float moveSpeed = 10.0f;
+    [SerializeField] float LifeTime = 3.0f;
+
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+
+        sr.sprite = Backgrounds[Random.Range(0, Backgrounds.Length)];
+
+        Destroy(this.gameObject, LifeTime);
+    }
 
     // Update is called once per frame
     void FixedUpdate()

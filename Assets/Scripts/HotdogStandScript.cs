@@ -10,7 +10,7 @@ public class HotdogStandScript : ObstacleScript
     {
         if (collision.gameObject.CompareTag("Ragdoll"))
         {
-            collision.gameObject.GetComponent<RagdollScript>().Health += HealAmount;
+            collision.gameObject.GetComponent<RagdollScript>().Heal(HealAmount);
         }
     }
 }
