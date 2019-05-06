@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 newPos;
-    private int moveDirection;
+    private float moveDirection = 0;
+
     [SerializeField] float moveSpeed = 10.0f;
+    [SerializeField] float LerpTime = 1.0f;
+
     private float InitialYPos;
 
     // Start is called before the first frame update
@@ -38,15 +41,15 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.D))
         {
-            moveDirection = 1;
+            moveDirection = Mathf.Lerp(moveDirection, 1, LerpTime);
         }
         else if(Input.GetKey(KeyCode.A))
         {
-            moveDirection = -1;
+            moveDirection = Mathf.Lerp(moveDirection, -1, LerpTime);
         }
         else
         {
-            moveDirection = 0;
+            moveDirection = Mathf.Lerp(moveDirection, 0, LerpTime);
         }
     }
 }
