@@ -34,7 +34,10 @@ public class PlayerController : MonoBehaviour
             newPos = new Vector2(rb.position.x + (moveDirection * moveSpeed * Time.deltaTime), InitialYPos);
         }
 
-        rb.transform.position = Vector3.Lerp(rb.transform.position, newPos, 1f);
+
+        MakeHorizontalLimits();
+
+        rb.transform.position = Vector3.Lerp(rb.transform.position, newPos, 1f);       
     }
 
     void GetMoveDirection()
@@ -51,5 +54,13 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = Mathf.Lerp(moveDirection, 0, LerpTime);
         }
+    }
+
+    void MakeHorizontalLimits()
+    {
+        Vector2 topRightCorner = new Vector2(1, 1);
+        Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
+        edgeVector.x -= GetComponent<BoxCollider2D>().size.x / 2;
+        newPos.x = Mathf.Clamp(newPos.x, -edgeVector.x, edgeVector.x);
     }
 }
