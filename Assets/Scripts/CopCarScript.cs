@@ -12,5 +12,10 @@ public class CopCarScript : ObstacleScript
             // End game, player caught
             SceneManager.LoadScene(0);
         }
+        else if (collision.gameObject.CompareTag("Ragdoll"))
+        {
+            collision.gameObject.GetComponent<RagdollScript>().TakeDamage(DamageToPlayer);
+            HitAudio.Play();
+        }
     }
 }

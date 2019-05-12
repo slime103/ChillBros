@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float moveSpeed = 10.0f;
     [SerializeField] float LerpTime = 1.0f;
+    [SerializeField] float KnockbackStrength = 1.0f;
 
     private float InitialYPos;
 
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         MakeHorizontalLimits();
 
-        rb.transform.position = Vector3.Lerp(rb.transform.position, newPos, 1f);       
+        rb.MovePosition(newPos);       
     }
 
     void GetMoveDirection()
@@ -62,5 +63,19 @@ public class PlayerController : MonoBehaviour
         Vector2 edgeVector = Camera.main.ViewportToWorldPoint(topRightCorner);
         edgeVector.x -= GetComponent<BoxCollider2D>().size.x / 2;
         newPos.x = Mathf.Clamp(newPos.x, -edgeVector.x, edgeVector.x);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if(collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("CopCar"))
+        //{
+            
+        //}
+
+        Vector3 KnockbackDir = collision.gameObject.transform.position - transform.position;
+        KnockbackDir.Normalize();
+
+        rb.transform.position = transform.position - (KnockbackDir * KnockbackStrength);
+        Debug.Log("Triggered bounce");
     }
 }

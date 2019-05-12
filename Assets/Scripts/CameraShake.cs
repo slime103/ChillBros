@@ -28,6 +28,5 @@ public class CameraShake : MonoBehaviour
         }
 
         transform.localPosition = OriginalPos;
-        Debug.Log(transform.localPosition);
     }
 }

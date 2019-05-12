@@ -36,8 +36,6 @@ public class RagdollScript : MonoBehaviour
 
         mainSlider.value = Health;
         StartCoroutine(cameraShake.Shake(0.2f, 0.4f));
-
-        Debug.Log(Health);
     }
 
     public void Heal(float HealAmount)

@@ -6,7 +6,8 @@ public class ObstacleScript : MonoBehaviour
 {
     Rigidbody2D rb = null;
     [SerializeField] float moveSpeed = 10.0f;
-    [SerializeField] float DamageToPlayer = 5.0f;
+    [SerializeField] protected float DamageToPlayer = 5.0f;
+    [SerializeField] protected AudioSource HitAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class ObstacleScript : MonoBehaviour
         if(collision.gameObject.CompareTag("Ragdoll"))
         {
             collision.gameObject.GetComponent<RagdollScript>().TakeDamage(DamageToPlayer);
+            HitAudio.Play();
         }
     }
 }
