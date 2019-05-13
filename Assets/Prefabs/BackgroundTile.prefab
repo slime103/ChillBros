@@ -93,8 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Backgrounds:
-  - {fileID: 21300000, guid: a059e33e85ce7494780e672520b44944, type: 3}
-  - {fileID: 21300000, guid: 0a0530e967e64084ab58a62b23c85e11, type: 3}
-  - {fileID: 21300000, guid: 660eede6920b0f149ac041aa9e1f1528, type: 3}
+  - {fileID: 21300000, guid: 63c74f7924550994a9767758055198f1, type: 3}
   moveSpeed: 7.5
   LifeTime: 3

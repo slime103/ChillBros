@@ -696,7 +696,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.10980392, g: 1, b: 0.48235294, a: 0}
+  m_BackGroundColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7173,6 +7173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1938614389, guid: 7dffcaf4693fd5d4e93d8a2bda2aa763, type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7480312489077539203, guid: 7dffcaf4693fd5d4e93d8a2bda2aa763,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7228,14 +7232,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1938614389, guid: 7dffcaf4693fd5d4e93d8a2bda2aa763, type: 3}
-      propertyPath: m_Constraints
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1901185568593540058, guid: 7dffcaf4693fd5d4e93d8a2bda2aa763,
         type: 3}
       propertyPath: KnockbackStrength
-      value: 2
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dffcaf4693fd5d4e93d8a2bda2aa763, type: 3}
