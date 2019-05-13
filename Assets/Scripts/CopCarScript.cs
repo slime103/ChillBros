@@ -10,7 +10,7 @@ public class CopCarScript : ObstacleScript
         if(collision.gameObject.CompareTag("Player"))
         {
             // End game, player caught
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
         else if (collision.gameObject.CompareTag("Ragdoll"))
         {
