@@ -31,7 +31,7 @@ public class RagdollScript : MonoBehaviour
         else
         {
             Health = 0.0f;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
 
         mainSlider.value = Health;
