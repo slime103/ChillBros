@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 newPos;
     private float moveDirection = 0;
+    private bool bKnocked = false;
 
     [SerializeField] float moveSpeed = 10.0f;
     [SerializeField] float LerpTime = 1.0f;
@@ -38,7 +39,10 @@ public class PlayerController : MonoBehaviour
 
         MakeHorizontalLimits();
 
-        rb.MovePosition(newPos);       
+        if(!bKnocked)
+        {
+            rb.MovePosition(newPos);
+        }             
     }
 
     void GetMoveDirection()
@@ -67,15 +71,30 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if(collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("CopCar"))
-        //{
-            
-        //}
+        if (collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("CopCar"))
+        {
+            Vector3 KnockbackDir = collision.gameObject.transform.position - transform.position;
+            KnockbackDir.Normalize();
+            StartCoroutine(Knockback(KnockbackDir));
+        }
+    }
 
-        Vector3 KnockbackDir = collision.gameObject.transform.position - transform.position;
-        KnockbackDir.Normalize();
+    IEnumerator Knockback(Vector3 KnockbackDir)
+    {
+        float InitialTime = Time.time;
 
-        rb.transform.position = transform.position - (KnockbackDir * KnockbackStrength);
-        Debug.Log("Triggered bounce");
+        bKnocked = true;
+
+        while (Time.time < InitialTime)
+        {
+            rb.transform.position = Vector3.Lerp(rb.transform.position, rb.transform.position - (KnockbackDir * KnockbackStrength), (Time.time - InitialTime) / 1f);
+            yield return null;
+        }
+
+        rb.transform.position = rb.transform.position - (KnockbackDir * KnockbackStrength);
+
+        bKnocked = false;
+        
+        yield return null;
     }
 }
